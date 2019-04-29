@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Receitas";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - cookboard</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+        <nav class="navbar navbar-light navbar-expand-md fixed-top bg-white navbar-transparency" style="padding:0px;height:80px;">
+            <div class="container">
+                <div class="navbar-brand" style="height:112px;padding-top:10px;">
+                    <img src="~/img/icon.png"  style="height:70px; padding-top: 20px;">
+                    <strong>CookBoard</strong>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation">
+
+                            <div class="container h-100">
+                                <div class="d-flex justify-content-center h-100">
+                                    <div class="searchbar">
+                                        <input class="search_input" type="text" name="" placeholder="Search...">
+                                        <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Receitas</strong></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
+                            <div class="dropdown-menu" style="width:150px;">
+                                <a class="dropdown-item" href="#"><strong>Editar Perfil</strong></a>
+                                <a class="dropdown-item" href="#"><strong>Histórico</strong></a>
+                                <a class="dropdown-item" href="#"><strong>Favoritos</strong></a>
+                                <a class="dropdown-item" href="#"><strong>Log out</strong></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - cookboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

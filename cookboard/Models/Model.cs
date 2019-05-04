@@ -1,4 +1,4 @@
-namespace cookboard.Models
+namespace Infra.Data
 {
     using System;
     using System.Data.Entity;

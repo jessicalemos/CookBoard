@@ -1,14 +1,14 @@
-namespace cookBoard
+namespace cookboard.Models
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class Model : DbContext
     {
-        public Model1()
-            : base("name=cookBoard")
+        public Model()
+            : base("name=cookModel")
         {
         }
 
@@ -17,10 +17,6 @@ namespace cookBoard
         public virtual DbSet<Ingrediente> Ingredientes { get; set; }
         public virtual DbSet<Local> Locals { get; set; }
         public virtual DbSet<Receita> Receitas { get; set; }
-        public virtual DbSet<Receita_Ingrediente> Receita_Ingrediente { get; set; }
-        public virtual DbSet<Receita_ReceitaAuxiliar> Receita_ReceitaAuxiliar { get; set; }
-        public virtual DbSet<ReceitaAuxiliar> ReceitaAuxiliars { get; set; }
-        public virtual DbSet<Supermercado> Supermercadoes { get; set; }
         public virtual DbSet<Utilizador> Utilizadors { get; set; }
         public virtual DbSet<Utilizador_Receita> Utilizador_Receita { get; set; }
 
@@ -44,14 +40,14 @@ namespace cookBoard
                 .IsUnicode(false);
 
             modelBuilder.Entity<Ingrediente>()
-                .HasMany(e => e.Receita_Ingrediente)
-                .WithRequired(e => e.Ingrediente)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Ingrediente>()
                 .HasMany(e => e.Locals)
                 .WithMany(e => e.Ingredientes)
                 .Map(m => m.ToTable("Ingrediente_Local").MapLeftKey("IngredienteId").MapRightKey("LocalId"));
+
+            modelBuilder.Entity<Ingrediente>()
+                .HasMany(e => e.Receitas)
+                .WithMany(e => e.Ingredientes)
+                .Map(m => m.ToTable("Receita_Ingrediente").MapLeftKey("IngredienteId").MapRightKey("ReceitaId"));
 
             modelBuilder.Entity<Local>()
                 .Property(e => e.Rua)
@@ -64,11 +60,6 @@ namespace cookBoard
             modelBuilder.Entity<Local>()
                 .Property(e => e.Localidade)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Local>()
-                .HasMany(e => e.Supermercadoes)
-                .WithMany(e => e.Locals)
-                .Map(m => m.ToTable("Supermercado_Local").MapLeftKey("LocalId").MapRightKey("SupermercadoId"));
 
             modelBuilder.Entity<Receita>()
                 .Property(e => e.Nome)
@@ -108,40 +99,9 @@ namespace cookBoard
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Receita>()
-                .HasMany(e => e.Receita_Ingrediente)
-                .WithRequired(e => e.Receita)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Receita>()
-                .HasMany(e => e.Receita_ReceitaAuxiliar)
-                .WithRequired(e => e.Receita)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Receita>()
                 .HasMany(e => e.Utilizador_Receita)
                 .WithRequired(e => e.Receita)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Receita_Ingrediente>()
-                .Property(e => e.Quantidade)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Receita_ReceitaAuxiliar>()
-                .Property(e => e.ReceitaAuxiliarNome)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ReceitaAuxiliar>()
-                .Property(e => e.Nome)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ReceitaAuxiliar>()
-                .HasMany(e => e.Receita_ReceitaAuxiliar)
-                .WithRequired(e => e.ReceitaAuxiliar)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Supermercado>()
-                .Property(e => e.Nome)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Utilizador>()
                 .Property(e => e.Username)

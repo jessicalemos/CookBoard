@@ -1,4 +1,4 @@
-namespace cookBoard
+namespace cookboard.Models
 {
     using System;
     using System.Collections.Generic;

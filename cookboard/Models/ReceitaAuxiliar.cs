@@ -6,26 +6,20 @@ namespace cookBoard
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("EmentaSemanal")]
-    public partial class EmentaSemanal
+    [Table("ReceitaAuxiliar")]
+    public partial class ReceitaAuxiliar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EmentaSemanal()
+        public ReceitaAuxiliar()
         {
-            EmentaSemanal_Receita = new HashSet<EmentaSemanal_Receita>();
+            Receita_ReceitaAuxiliar = new HashSet<Receita_ReceitaAuxiliar>();
         }
 
-        public int Id { get; set; }
-
-        [Required]
+        [Key]
         [StringLength(45)]
-        public string UtilizadorUsername { get; set; }
-
-        public DateTime DataLancamento { get; set; }
+        public string Nome { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmentaSemanal_Receita> EmentaSemanal_Receita { get; set; }
-
-        public virtual Utilizador Utilizador { get; set; }
+        public virtual ICollection<Receita_ReceitaAuxiliar> Receita_ReceitaAuxiliar { get; set; }
     }
 }

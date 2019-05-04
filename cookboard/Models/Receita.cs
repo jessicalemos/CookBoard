@@ -1,4 +1,4 @@
-namespace cookboard.Models
+namespace cookBoard
 {
     using System;
     using System.Collections.Generic;
@@ -13,8 +13,9 @@ namespace cookboard.Models
         public Receita()
         {
             EmentaSemanal_Receita = new HashSet<EmentaSemanal_Receita>();
+            Receita_Ingrediente = new HashSet<Receita_Ingrediente>();
+            Receita_ReceitaAuxiliar = new HashSet<Receita_ReceitaAuxiliar>();
             Utilizador_Receita = new HashSet<Utilizador_Receita>();
-            Ingredientes = new HashSet<Ingrediente>();
         }
 
         public int Id { get; set; }
@@ -43,8 +44,8 @@ namespace cookboard.Models
         [StringLength(45)]
         public string Dificuldade { get; set; }
 
+        [Column(TypeName = "text")]
         [Required]
-        [StringLength(256)]
         public string Descricao { get; set; }
 
         [Required]
@@ -58,12 +59,15 @@ namespace cookboard.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmentaSemanal_Receita> EmentaSemanal_Receita { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Receita_Ingrediente> Receita_Ingrediente { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Receita_ReceitaAuxiliar> Receita_ReceitaAuxiliar { get; set; }
+
         public virtual Utilizador Utilizador { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utilizador_Receita> Utilizador_Receita { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingrediente> Ingredientes { get; set; }
     }
 }

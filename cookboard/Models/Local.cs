@@ -1,4 +1,4 @@
-namespace cookboard.Models
+namespace cookBoard
 {
     using System;
     using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace cookboard.Models
         public Local()
         {
             Ingredientes = new HashSet<Ingrediente>();
+            Supermercadoes = new HashSet<Supermercado>();
         }
 
         [Required]
@@ -31,5 +32,8 @@ namespace cookboard.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ingrediente> Ingredientes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supermercado> Supermercadoes { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace Infra.Data
+namespace cookboard.Models
 {
     using System;
     using System.Collections.Generic;

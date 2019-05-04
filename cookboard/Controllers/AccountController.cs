@@ -8,41 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using cookboard.Shared;
 using cookboard.Models;
+using System.Security.Cryptography;
 
 namespace cookboard.Controllers
 {
-    [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
-        private UserHandling userHandling;
-        public AccountController(UserContext context)
-        {
-            //_context = context;
-            userHandling = new UserHandling(context);
-        }
+        private Model db = new Model();
 
-        [HttpGet]
-        public IActionResult RegistarUtilizador()
+        public ActionResult Index(string utilizador)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult RegistarUtilizador([Bind] Utilizador user)
-        {
-            if (ModelState.IsValid)
-            {
-                bool RegistrationStatus = this.userHandling.registerUser(user);
-                if (RegistrationStatus)
-                {
-                    ModelState.Clear();
-                    TempData["Success"] = "Registration Successful!";
-                }
-                else
-                {
-                    TempData["Fail"] = "This Username already exists. Registration Failed.";
-                }
-            }
+            //  ViewData["User_Name"] = "Bem vindo" + user;
             return View();
         }
 
@@ -52,40 +28,77 @@ namespace cookboard.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind] Utilizador utilizador)
+        public ActionResult Login(string username, string password)
         {
-            ModelState.Remove("username");
-            ModelState.Remove("password");
-
             if (ModelState.IsValid)
             {
-                var LoginStatus = this.userHandling.validateUser(utilizador);
-                if (LoginStatus)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, utilizador.username)
-                    };
-                    ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
-                    ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                var utilizadors = (from m in db.Utilizadors where (m.Username == username) select m);
 
-                    await HttpContext.SignInAsync(principal);
-                    return RedirectToAction("Index", "Home");
+                if (utilizadors.ToList().Count > 0)
+                {
+                    Utilizador utilizador = utilizadors.ToList().ElementAt<Utilizador>(0);
+                    using (MD5 md5Hash = MD5.Create())
+                    {
+                        if (MyHelper.VerifyMd5Hash(md5Hash, password, utilizador.Password))
+                        {
+                            //    string user = utilizador.Username.ToString();
+                            //    HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(utilizador.Id.ToString(), utilizador.Tipo);
+                            //    Response.Cookies.Add(cookie);
+                            if (utilizador.Tipo.Equals("Professor"))
+                            {
+                                //     ViewData["User_Name"] = "Bem vindo" + utilizador.Username;
+                                return RedirectToAction("Index", "Professor");
+                            }
+                            else
+                            {
+                                //   var t = ViewData["User_Name"] = "Bem vindo" + utilizador.Username;
+                                return RedirectToAction("Index", "Aluno");
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("password", "Password incorreta!");
+                            return View();
+                        }
+                    }
                 }
                 else
                 {
-                    TempData["UserLoginFailed"] = "Login Failed.Please enter correct credentials";
+                    ModelState.AddModelError("", "Dados incorretos!");
+                    return View();
                 }
             }
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Logout()
+        public ActionResult LogOut()
         {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("index", "Home");
+            //     FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Registar(Utilizador utilizador)
+        {
+            if (ModelState.IsValid)
+            {
+                using (Model db = new Model())
+                {
+                    db.Utilizadors.Add(utilizador);
+                    db.SaveChanges();
+                }
+                ModelState.Clear();
+                ViewBag.Message = utilizador.Nome + " registado com sucesso.";
+            }
+            return View();
+        }
+
+        public ActionResult sucessAction()
+        {
+            ViewBag.title = "Sucesso";
+            ViewBag.mensagem = "Login realizado com sucesso";
+            ViewBag.controller = "Home";
+            return View("_sucessView");
         }
     }
 }

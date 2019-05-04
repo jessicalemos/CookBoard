@@ -21,19 +21,34 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation">
+
+                        <div class="container h-100">
+                            <div class="d-flex justify-content-center h-100">
+                                <div class="searchbar">
+                                    <input class="search_input" type="text" name="" placeholder="Search...">
+                                    <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </li>
-                    <a asp-area="" asp-controller="Home" asp-action="Login">Log In</a>
+                    <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Receitas</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
+                        <div class="dropdown-menu" style="width:150px;">
+                            <a class="dropdown-item" href="#"><strong>Editar Perfil</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Histórico</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Favoritos</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Log out</strong></a>
+                        </div>
+                    </li>
                 </ul>
             </div>
-
         </div>
     </nav>
-    <div style="position:absolute; right:15%;">
-        <a class="number">
-            <img src="~/img/background.jpg" style=" height:50px; top:0; " />
-        </a>
-    </div>
-
 
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -70,3 +85,4 @@
 
     @RenderSection("Scripts", required: false)
 </body>
+</html>

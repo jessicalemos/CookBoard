@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - cookboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top bg-white navbar-transparency" style="padding:0px;height:80px;">
+        <div class="container">
+            <div class="navbar-brand" style="height:112px;padding-top:10px;">
+                <img src="~/img/icon.png" style="height:70px; padding-top: 20px;">
+                <strong>CookBoard</strong>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Receitas</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
+                        <div class="dropdown-menu" style="width:150px;">
+                            <a class="dropdown-item" href="#"><strong>Editar Perfil</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Histórico</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Favoritos</strong></a>
+                            <a class="dropdown-item" href="#"><strong>Log out</strong></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="register-photo">
+        <div class="registar-clean" style="background-size:cover;">
+            <form method="post">
+                <h1 class="text-center">Registar Utilizador</h1>
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" required></div>
+                <div class="form-group"><input class="form-control" type="date" name="data" placeholder="Data de Nascimento" required></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" required></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
+                <div class="form-group"><input class="form-control" type="password" name="confirm_password" placeholder="Confirm Password" required></div>
+                <select class="form-control">
+                    <option>Professor</option>
+                    <option>Aluno</option>
+                </select>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(146,141,142);">Guardar</button></div>
+                <!-- <a asp-area="" asp-controller="Home" asp-action="Receitas">Log In</a> -->
+            </form>
+        </div>
+    </div>
+    <!-- <div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>-->
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - cookboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

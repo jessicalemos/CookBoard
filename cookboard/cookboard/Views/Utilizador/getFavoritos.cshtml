@@ -1,0 +1,38 @@
+﻿@model IEnumerable<cookboard.Models.Receita>
+@{
+    ViewData["Title"] = "getFavoritos";
+}
+
+<h1>Receitas Favoritas</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dificuldade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempoConfecao)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dificuldade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempoConfecao)
+            </td>
+            <td>
+                @Html.ActionLink("Consultar", "Consultar", new { idReceita = item.Nome })
+            </td>
+        </tr>
+    }
+</table>

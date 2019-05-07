@@ -1,0 +1,31 @@
+﻿@model IEnumerable<cookboard.Models.Receita>
+@{
+    ViewBag.Title = "getEmentaSemanal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <h1 class="my-4">
+        Ementa Semanal
+    </h1>
+
+    @foreach (var item in Model)
+    {
+        <hr>
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-fluid rounded mb-3 mb-md-0" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="" style="height:90%;width:90%">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>@Html.DisplayFor(modelItem => item.Nome)</h3>
+                <p><img src="~/img/star-half-alt-solid.svg" style="width:15px;margin-top:-5px;">&nbsp; Dificuldade: @Html.DisplayFor(modelItem => item.Dificuldade)</p>
+                <p><img src="~/img/clock-regular.svg" style="width:15px;">&nbsp; Tempo: @Html.DisplayFor(modelItem => item.TempoConfecao)</p>
+                <a class="btn btn-primary" href="#">Consultar</a>
+            </div>
+        </div>
+    }
+
+</div>

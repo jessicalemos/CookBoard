@@ -32,3 +32,4 @@ C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\R
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\getHistorico.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\getFavoritos.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\Login.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Receitas\getReceitas.g.cshtml.cs

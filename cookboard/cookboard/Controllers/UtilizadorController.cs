@@ -22,60 +22,10 @@ namespace cookboard.Controllers
             co = context;
         }
 
-        // GET: /<controller>/
         public IActionResult getUsers()
         {
             List<Utilizador> u = co.Utilizador.ToList();
             return View(u);
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-
-            return View();
-        }
-
-        public bool validateUser(Utilizador user)
-        {
-            user.Password = MyHelper.HashPassword(user.Password);
-            var returnedUser = co.Utilizador.Where(b => b.Username == user.Username && b.Password == user.Password).FirstOrDefault();
-
-            if (returnedUser == null)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind] Utilizador user)
-        {
-            ModelState.Remove("nome");
-            ModelState.Remove("email");
-
-            if (ModelState.IsValid)
-            {
-                var LoginStatus = validateUser(user);
-                if (LoginStatus)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Username)
-                    };
-                    ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
-                    ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-
-                    await HttpContext.SignInAsync(principal);
-                    return RedirectToAction("getUsers", "UserView");
-                }
-                else
-                {
-                    TempData["UserLoginFailed"] = "Login Failed.Please enter correct credentials";
-                }
-            }
-            return View();
         }
 
         public IActionResult getHistorico()

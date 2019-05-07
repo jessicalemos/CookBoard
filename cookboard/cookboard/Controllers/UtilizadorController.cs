@@ -78,16 +78,6 @@ namespace cookboard.Controllers
             return View();
         }
 
-
-        public bool registerUser(Utilizador user)
-        {
-            user.Password = MyHelper.HashPassword(user.Password);
-            co.Utilizador.Add(user);
-            co.SaveChanges();
-            return true;
-        }
-
-
         public IActionResult getHistorico()
         {
             string username = User.Identity.Name;

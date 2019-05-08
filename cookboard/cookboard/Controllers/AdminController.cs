@@ -65,6 +65,10 @@ namespace cookboard.Controllers
 
             return RedirectToAction("getUser");
         }
-
+        public IActionResult getUsers()
+        {
+            List<Utilizador> u = co.Utilizador.ToList();
+            return View(u);
+        }
     }
 }

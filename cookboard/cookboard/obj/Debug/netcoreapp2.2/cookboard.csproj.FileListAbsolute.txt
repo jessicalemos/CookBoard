@@ -34,3 +34,5 @@ C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\R
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\Login.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Receitas\getReceitas.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\EmentaSemanal\getEmentaSemanal.g.cshtml.cs
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.dll
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.pdb

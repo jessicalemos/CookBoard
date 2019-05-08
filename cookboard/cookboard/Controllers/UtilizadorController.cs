@@ -22,12 +22,7 @@ namespace cookboard.Controllers
             co = context;
         }
 
-        public IActionResult getUsers()
-        {
-            List<Utilizador> u = co.Utilizador.ToList();
-            return View(u);
-        }
-
+        
         public IActionResult getHistorico()
         {
             string username = User.Identity.Name;

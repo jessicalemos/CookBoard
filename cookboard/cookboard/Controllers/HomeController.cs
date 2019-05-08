@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using cookboard.Models;
+using cookboard.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -29,4 +30,5 @@ namespace cookboard.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+   
 }

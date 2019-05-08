@@ -36,7 +36,7 @@ namespace cookboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=DESKTOP-B57KUKN;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=DESKTOP-4R9J4J9;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
         }
 

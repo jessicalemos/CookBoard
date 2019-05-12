@@ -20,14 +20,42 @@ namespace cookboard.Controllers
         {
             var size = (from m in co.EmentaSemanal select m).ToList().Count;
 
-            var ementa = (from m in co.EmentaSemanalReceita
+            List<Receita> receita = (from m in co.EmentaSemanalReceita
                           join n in co.Receita on m.ReceitaId equals n.Id
                           where (m.EmentaSemanalId == size)
                           select n).ToList();
+            
+            List<string> dias = (from m in co.EmentaSemanalReceita
+                          where (m.EmentaSemanalId == size)
+                          select m.Dia).ToList();
 
-            List<Receita> lista = ementa.ToList<Receita>();
+            var num = dias.Count;
 
-            return View(lista);
+            List<EmentaViewModel> final = new List<EmentaViewModel>();
+
+            for (int i=0; i<num; i++)
+            {
+                Receita r = receita[i];
+                string d = dias[i];
+
+                final.Add(new EmentaViewModel(d, r));
+            }
+
+            return View(final);
+        }
+
+        public ActionResult getIngredientes()
+        {
+            var size = (from m in co.EmentaSemanal select m).ToList().Count;
+
+            var ing = (from m in co.EmentaSemanalReceita
+                          join n in co.Receita on m.ReceitaId equals n.Id
+                          join ri in co.ReceitaIngrediente on n.Id equals ri.ReceitaId
+                          join i in co.Ingrediente on ri.IngredienteId equals i.Id
+                          where (m.EmentaSemanalId == size)
+                          select n).ToHashSet();
+
+            return View(ing);
         }
     }
 }

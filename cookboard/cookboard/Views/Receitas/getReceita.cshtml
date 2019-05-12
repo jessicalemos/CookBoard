@@ -1,0 +1,40 @@
+﻿@model cookboard.Models.ReceitaViewModel
+@{
+    ViewBag.Title = "getReceita";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Html.DisplayFor(modelItem => Model.Receita.Nome)
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="@Html.DisplayFor(modelItem => Model.Receita.Imagem)" style="height:290px;width:480px;" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Ingredientes</h3>
+
+            @foreach (var item in Model.Ingredientes)
+            {
+                <input type="checkbox">@Html.DisplayFor(modelItem => item.Nome)<br>
+            }
+        </div>
+
+        <ul style="list-style-type: none;">
+            <li><img src="~/img/clock-regular.svg" style="width:15px;"> Tempo de confeção: @Html.DisplayFor(modelItem => Model.Receita.TempoConfecao)</li>
+            <li><img src="~/img/star-half-alt-solid.svg" style="width:15px;margin-top:-5px;"> Dificuldade: @Html.DisplayFor(modelItem => Model.Receita.Dificuldade)</li>
+            <li><img src="~/img/utensils-solid.svg" style="width:13px;margin-top:-5px;"> Porção: @Html.DisplayFor(modelItem => Model.Receita.Porcao)</li>
+            <h6><img src="~/img/balance-scale-solid.svg" style="width:15px;"> Informação Nutricional</h6>
+            <li>@Html.DisplayFor(modelItem => Model.Receita.InfoNutricional)</li>
+        </ul>
+    </div>
+    <input type="button" class="btn btn-outline-light-light text-dark" value="Localizar Ingredientes" onclick="location.href='';" />
+    <input type="button" class="btn btn-outline-light-light text-dark" value="Iniciar" onclick="location.href='';" />
+</div>

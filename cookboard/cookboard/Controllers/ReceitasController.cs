@@ -24,5 +24,20 @@ namespace cookboard.Controllers
 
             return View(lista);
         }
+
+        public ActionResult getReceita(int idReceita)
+        {
+
+            List<Ingrediente> ing = (from ri in co.ReceitaIngrediente 
+                                   join i in co.Ingrediente on ri.IngredienteId equals i.Id
+                                   where (ri.ReceitaId == idReceita)
+                                   select i).ToList();
+
+            Receita rec = (from n in co.Receita
+                       where (n.Id == idReceita)
+                       select n).Single();
+          
+            return View(new ReceitaViewModel(rec,ing));
+        }
     }
 }

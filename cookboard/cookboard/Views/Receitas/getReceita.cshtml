@@ -35,6 +35,6 @@
             <li>@Html.DisplayFor(modelItem => Model.Receita.InfoNutricional)</li>
         </ul>
     </div>
-    <input type="button" class="btn btn-outline-light-light text-dark" value="Localizar Ingredientes" onclick="location.href='';" />
+    <input type="button" class="btn btn-outline-light-light text-dark" value="Localizar Ingredientes" onclick="location.href='@Url.Action("getLocalizacao","LocalIngrediente")';" />
     <input type="button" class="btn btn-outline-light-light text-dark" value="Iniciar" onclick="location.href='@Url.Action("getPassos","Receitas", new { idReceita = Model.Receita.Id })';" />
 </div>

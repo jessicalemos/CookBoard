@@ -53,7 +53,7 @@ namespace cookboard.Controllers
                           join ri in co.ReceitaIngrediente on n.Id equals ri.ReceitaId
                           join i in co.Ingrediente on ri.IngredienteId equals i.Id
                           where (m.EmentaSemanalId == size)
-                          select n).ToHashSet();
+                          select i).ToHashSet();
 
             return View(ing);
         }

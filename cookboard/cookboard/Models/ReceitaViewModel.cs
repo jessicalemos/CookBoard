@@ -7,13 +7,13 @@ namespace cookboard.Models
 {
     public class ReceitaViewModel
     {
-        public ReceitaViewModel(Receita receita, List<Ingrediente> ingredientes)
+        public ReceitaViewModel(Receita receita, List<IngredienteViewModel> ingredientes)
         {
             Receita = receita;
             Ingredientes = ingredientes;
         }
 
         public Receita Receita { get; set; }
-        public List<Ingrediente> Ingredientes { get; set; }
+        public List<IngredienteViewModel> Ingredientes { get; set; }
     }
 }

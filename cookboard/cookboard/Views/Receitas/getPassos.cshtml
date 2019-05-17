@@ -1,0 +1,27 @@
+﻿@model IEnumerable<cookboard.Models.PassosViewModel>
+@{
+    ViewData["Title"] = "getPassos";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumPasso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passo)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumPasso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passo)
+            </td>
+        </tr>
+    }
+</table>

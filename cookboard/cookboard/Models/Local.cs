@@ -7,7 +7,6 @@ namespace cookboard.Models
     {
         public Local()
         {
-            IngredienteLocal = new HashSet<IngredienteLocal>();
             SupermercadoLocal = new HashSet<SupermercadoLocal>();
         }
 
@@ -16,7 +15,6 @@ namespace cookboard.Models
         public string Localidade { get; set; }
         public int Id { get; set; }
 
-        public virtual ICollection<IngredienteLocal> IngredienteLocal { get; set; }
         public virtual ICollection<SupermercadoLocal> SupermercadoLocal { get; set; }
     }
 }

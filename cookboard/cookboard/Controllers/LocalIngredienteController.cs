@@ -16,13 +16,40 @@ namespace cookboard.Controllers
             co = context;
         }
 
-        public ActionResult getLocalizacao()
+        public ActionResult getLocalizacao(int idReceita)
         {
-            var receitas = (from m in co.Receita select m);
+            var sup = (from ri in co.ReceitaIngrediente
+                          join i in co.Ingrediente on ri.IngredienteId equals i.Id
+                          join l in co.IngredienteSupermercado on i.Id equals l.IngredienteId
+                          join lo in co.Supermercado on l.SupermercadoId equals lo.Id
+                          where (ri.ReceitaId == idReceita)
+                          select lo.Nome).ToHashSet();
 
-            List<Receita> lista = receitas.ToList<Receita>();
+            List<string> listaSup = sup.ToList<string>();
 
-            return View();
+            var locais = (from ri in co.ReceitaIngrediente
+                          join i in co.Ingrediente on ri.IngredienteId equals i.Id
+                          join l in co.IngredienteSupermercado on i.Id equals l.IngredienteId
+                          join ss in co.Supermercado on l.SupermercadoId equals ss.Id
+                          join s in co.SupermercadoLocal on ss.Id equals s.SupermercadoId
+                          join lo in co.Local on s.LocalId equals lo.Id
+                          where (ri.ReceitaId == idReceita)
+                          select lo).ToHashSet();
+
+            List<Local> lista = locais.ToList<Local>();
+
+            List<LocalIngredienteViewModel> final = new List<LocalIngredienteViewModel>();
+            int num = sup.Count();
+
+            for (int i = 0; i < num; i++)
+            {
+                string supermecado = listaSup[i];
+                Local local = lista[i];
+
+                final.Add(new LocalIngredienteViewModel(supermecado, local));
+            }
+
+            return View(final);
         }
     }
 }

@@ -7,14 +7,14 @@ namespace cookboard.Models
     {
         public Ingrediente()
         {
-            IngredienteLocal = new HashSet<IngredienteLocal>();
+            IngredienteSupermercado = new HashSet<IngredienteSupermercado>();
             ReceitaIngrediente = new HashSet<ReceitaIngrediente>();
         }
 
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        public virtual ICollection<IngredienteLocal> IngredienteLocal { get; set; }
+        public virtual ICollection<IngredienteSupermercado> IngredienteSupermercado { get; set; }
         public virtual ICollection<ReceitaIngrediente> ReceitaIngrediente { get; set; }
     }
 }

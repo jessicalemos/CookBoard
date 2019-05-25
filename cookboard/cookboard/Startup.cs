@@ -38,6 +38,12 @@ namespace cookboard
 
             var connection = @"Server=DESKTOP-4R9J4J9;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.LoginPath = "/Account/utilizadorLogin/";
+
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

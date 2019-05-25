@@ -22,6 +22,11 @@ namespace cookboard.Controllers
             co = context;
         }
 
+        public IActionResult editarP()
+        {
+            return View();
+        }
+
         public IActionResult getUsers()
         {
             List<Utilizador> u = co.Utilizador.ToList();

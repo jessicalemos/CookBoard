@@ -1,74 +1,73 @@
 ﻿using System;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using cookboard._Shared;
 using cookboard.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 
 namespace cookboard.Controllers
 {
     public class AccountController : Controller
     {
-
         private readonly cookBoardContext co;
         public AccountController(cookBoardContext context)
         {
             //_context = context;
             co = context;
         }
-        public IActionResult Login()
+
+        public bool ValidateUser(Utilizador user)
         {
-            return View();
+            user.Password = MyHelper.HashPassword(user.Password);
+            var returnedUser = co.Utilizador.Where(b => b.Username == user.Username && b.Password == user.Password).FirstOrDefault();
+
+            if (returnedUser == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public ActionResult Validate(Utilizador user)
+        [HttpGet]
+        public IActionResult utilizadorLogin()
         {
-            var u = co.Utilizador.Where(s => s.Username == user.Username);
-            if (u.Contains())
-            {
-                if (u.Where(s => s.Password == user.Password).Contains())
-                {
+              return View();
+        }
 
-                    return Json(new { status = true, message = "Login Successfull!" });
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> utilizadorLogin([Bind] Utilizador utilizador)
+        {
+            ModelState.Remove("Email");
+            ModelState.Remove("Nome");
+            ModelState.Remove("DataNascimento");
+            ModelState.Remove("Tipo");
+
+
+            if (ModelState.IsValid)
+            {
+                var LoginStatus = ValidateUser(utilizador);
+                if (LoginStatus)
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, utilizador.Username)
+                    };
+                    ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
+                    ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+
+                    await HttpContext.SignInAsync(principal);
+                    return RedirectToAction("getUsers", "Utilizador");
                 }
                 else
                 {
-                    return Json(new { status = false, message = "Invalid Password!" });
+                    TempData["UserLoginFailed"] = "Login Failed.Please enter correct credentials";
                 }
             }
-            else
-            {
-                return Json(new { status = false, message = "Invalid Email!" });
-            }
+            return View();
         }
-        /*
-        <script>
-  function Validate()
-        {
-    $.ajax(
-    {
-                type: "POST",
-      url: '@Url.Action("Validate", "Account")',
-      data: {
-         email: $('#Username').val(),
-        password: $('#Password').val()
-      },
-      error: function(result) {
-                    alert("There is a Problem, Try Again!");
-                },
-      success: function(result) {
-                    console.log(result);
-                    if (result.status == true)
-                    {
-                        window.location.href = '@Url.Action("Index", "Home")';
-                    }
-                    else
-                    {
-                        alert(result.message);
-                    }
-                }
-            });
-        }
-</script>
-*/
     }
 }

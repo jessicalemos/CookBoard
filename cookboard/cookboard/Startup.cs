@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using cookboard.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace cookboard
 {
@@ -36,8 +37,14 @@ namespace cookboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=DESKTOP-B57KUKN;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=localhost;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.LoginPath = "/Account/utilizadorLogin/";
+
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

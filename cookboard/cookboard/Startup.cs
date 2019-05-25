@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using cookboard.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace cookboard
 {
@@ -36,7 +37,7 @@ namespace cookboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=DESKTOP-4R9J4J9;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"localhost;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>

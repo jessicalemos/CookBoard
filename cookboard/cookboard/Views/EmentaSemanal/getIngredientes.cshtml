@@ -3,19 +3,14 @@
     ViewData["Title"] = "getIngredientes";
 }
 
-<h1>Lista Ingredientes</h1>
+<h1>
+    Lista Ingredientes <input type="button" class="btn btn-light" style="float:right;" value="Localizar Ingredientes" onclick="location.href='@Url.Action("getLocalizacao","LocalIngrediente", new { idReceita = 1 })';" />
+</h1>
 
-<table class="table">
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
+<hr>
 
-        <td>
-            @Html.ActionLink("Localização", "Localização", new { idIngrediente = item.Id })
-        </td>
-    </tr>
-    }
-</table>
+@foreach (var item in Model)
+{
+   <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
+   <br>
+}

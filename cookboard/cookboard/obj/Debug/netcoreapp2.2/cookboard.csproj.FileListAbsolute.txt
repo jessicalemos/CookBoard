@@ -79,3 +79,5 @@ C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookbo
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.dll
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.pdb
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.csproj.CopyComplete
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Account\utilizadorLogin.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\editarP.g.cshtml.cs

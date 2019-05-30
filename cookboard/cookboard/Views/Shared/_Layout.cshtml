@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - CookBoard</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
     <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -23,14 +25,14 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-light" type="submit">Search</button>
                         </li>
 
                         <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="getReceitas" style="padding-top:20px;"><strong>Receitas</strong></a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="getEmentaSemanal" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
                             <div class="dropdown-menu" style="width:150px;">
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="editarP"><strong>Editar Perfil</strong></a>
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="getHistorico"> <strong>Histórico</strong></a>
@@ -45,7 +47,6 @@
         </nav>
     </header>
     <div class="container">
-        <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

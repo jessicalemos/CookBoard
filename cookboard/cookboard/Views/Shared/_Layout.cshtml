@@ -28,10 +28,11 @@
                         </li>
 
                         <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="getReceitas" style="padding-top:20px;"><strong>Receitas</strong></a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="utilizadorLogin" style="padding-top:20px;"><strong>Login</strong></a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="getEmentaSemanal" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
-                            <div class="dropdown-menu" style="width:150px;">
+                            <div class="dropdown" style="width:150px;">
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="editarP"><strong>Editar Perfil</strong></a>
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="getHistorico"> <strong>Histórico</strong></a>
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="getFavoritos"><strong>Favoritos</strong></a>

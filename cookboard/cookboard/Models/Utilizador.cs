@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace cookboard.Models
 {
@@ -18,7 +19,11 @@ namespace cookboard.Models
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Display(Name = "Email")]
+        [DataType(DataType.Text)]
         public string Email { get; set; }
+        [Display(Name = "Nome")]
+        [DataType(DataType.Text)]
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Tipo { get; set; }

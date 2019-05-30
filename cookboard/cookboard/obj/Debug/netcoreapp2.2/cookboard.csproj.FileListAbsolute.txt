@@ -79,3 +79,7 @@ C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookbo
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.pdb
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.csproj.CopyComplete
 C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Account\utilizadorLogin.g.cshtml.cs
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Home.g.cshtml.cs
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index1.g.cshtml.cs
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index2.g.cshtml.cs
+C:\Users\Operador\Desktop\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutAut.g.cshtml.cs

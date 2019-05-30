@@ -7,7 +7,7 @@
 
 <div class="container">
     <h1 class="my-4">Ementa Semanal</h1>
-    <input type="button" class="btn btn-outline-light-light text-dark" value="Lista Ingredientes" onclick="location.href='@Url.Action("getIngredientes","EmentaSemanal")';" />
+    <input type="button" class="btn btn-light" value="Lista Ingredientes" onclick="location.href='@Url.Action("getIngredientes","EmentaSemanal")';" />
 
     @foreach (var item in Model)
     {
@@ -23,7 +23,7 @@
                 <h4>@Html.DisplayFor(modelItem => item.Receita.Nome)</h4>
                 <p><img src="~/img/star-half-alt-solid.svg" style="width:15px;margin-top:-5px;">&nbsp; Dificuldade: @Html.DisplayFor(modelItem => item.Receita.Dificuldade)</p>
                 <p><img src="~/img/clock-regular.svg" style="width:15px;">&nbsp; Tempo: @Html.DisplayFor(modelItem => item.Receita.TempoConfecao)</p>
-                <input type="button" class="btn btn-outline-light-light text-dark" value="Consultar" onclick="location.href='@Url.Action("getReceita","Receitas", new { idReceita = item.Receita.Id })';" />
+                <input type="button" class="btn btn-light" value="Consultar" onclick="location.href='@Url.Action("getReceita","Receitas", new { idReceita = item.Receita.Id })';" />
             </div>
         </div>
     }

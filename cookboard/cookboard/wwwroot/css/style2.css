@@ -18,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 #sideNav .navbar-nav .nav-item .nav-link {
     font-weight: 800;
     letter-spacing: .05rem;
+    color:black;
     text-transform: uppercase
 }
 

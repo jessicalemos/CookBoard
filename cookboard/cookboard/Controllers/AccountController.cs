@@ -37,6 +37,11 @@ namespace cookboard.Controllers
               return View();
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> utilizadorLogin([Bind] Utilizador utilizador)
@@ -45,7 +50,6 @@ namespace cookboard.Controllers
             ModelState.Remove("Nome");
             ModelState.Remove("DataNascimento");
             ModelState.Remove("Tipo");
-
 
             if (ModelState.IsValid)
             {
@@ -61,8 +65,13 @@ namespace cookboard.Controllers
 
                     await HttpContext.SignInAsync(principal);
                     var tipo = (from m in co.Utilizador where (m.Username == utilizador.Username) select m.Tipo).FirstOrDefault();
-                    if (tipo.Equals("Professor")) return RedirectToAction("getUsers", "Utilizador");
-                    else return RedirectToAction("getReceitas", "Receitas");
+                    if (tipo.Equals("Professor"))
+                    {
+                        return RedirectToAction("Index", "Professor");
+                    }
+                    else {
+                        return RedirectToAction("Index", "Aluno");
+                    }                
                 }
                 else
                 {

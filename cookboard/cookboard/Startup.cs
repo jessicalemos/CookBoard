@@ -41,7 +41,7 @@ namespace cookboard
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>   
-                    {
+                    { 
                         options.LoginPath = "/Account/utilizadorLogin/";
 
                     });

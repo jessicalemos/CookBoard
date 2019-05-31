@@ -60,12 +60,33 @@ namespace cookboard.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
                     await HttpContext.SignInAsync(principal);
-                    return RedirectToAction("getUsers", "Utilizador");
+                    var tipo = (from m in co.Utilizador where (m.Username == utilizador.Username) select m.Tipo).FirstOrDefault();
+                    if (tipo.Equals("Professor")) return RedirectToAction("getUsers", "Utilizador");
+                    else return RedirectToAction("getReceitas", "Receitas");
                 }
                 else
                 {
                     TempData["UserLoginFailed"] = "Login Failed.Please enter correct credentials";
                 }
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult RegisterUtilizador()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegisterUtilizador([Bind] Utilizador utilizador)
+        {
+            if (ModelState.IsValid)
+            {
+                utilizador.Password = MyHelper.HashPassword(utilizador.Password);
+                co.Utilizador.Add(utilizador);
+                co.SaveChanges();
+                ModelState.Clear();
+                TempData["Success"] = "Registration Successful!";
             }
             return View();
         }

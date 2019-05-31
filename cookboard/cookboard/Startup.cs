@@ -37,10 +37,10 @@ namespace cookboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=localhost;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=DESKTOP-8IB8JQ6;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                    .AddCookie(options =>
+                    .AddCookie(options =>   
                     {
                         options.LoginPath = "/Account/utilizadorLogin/";
 

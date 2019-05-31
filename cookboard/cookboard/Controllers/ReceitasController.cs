@@ -63,12 +63,15 @@ namespace cookboard.Controllers
 
             List<PassosViewModel> passos = new List<PassosViewModel>();
             string[] words = rec.Descricao.Split('.');
-            int i = 0;
+            int tam = words.Length;
 
-            foreach(var word in words)
+            for(int j=0; j<tam-1; j++)
             {
-                i++;
-                passos.Add(new PassosViewModel(i, word));
+                string type;
+                if (j == 0) type = "primeiro";
+                else if (j == tam - 2) type = "ultimo";
+                else type = "intermedio";
+                passos.Add(new PassosViewModel(j+1, words[j], j+2,j,type));
             }
 
             return View(passos);

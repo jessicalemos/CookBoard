@@ -27,11 +27,38 @@
 
     @foreach (var item in Model)
     {
-        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="@Html.DisplayFor(modelItem => item.NumPasso)">
-            <div class="w-100">
-                <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
-            </div>
-        </section>
+        if (item.Type == "ultimo")
+        {
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="@Html.DisplayFor(modelItem => item.NumPasso)">
+        <div class="w-100">
+            <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
+        </div>
+        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Anterior" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoAnt)'" ;" />
+        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Terminar" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
+    </section>
+        }
+        else
+        {
+            if (item.Type == "primeiro")
+            {
+                <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="@Html.DisplayFor(modelItem => item.NumPasso)">
+                    <div class="w-100">
+                        <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
+                    </div>
+                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Proximo" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
+                </section>
+            }
+            else
+            {
+                <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="@Html.DisplayFor(modelItem => item.NumPasso)">
+                    <div class="w-100">
+                        <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
+                    </div>
+                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Anterior" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoAnt)'" ;" />
+                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Proximo" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
+                </section>
+            }
+        }
 
         <hr class="m-0">
     }

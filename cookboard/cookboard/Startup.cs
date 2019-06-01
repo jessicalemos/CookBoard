@@ -37,7 +37,7 @@ namespace cookboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=DESKTOP-4R9J4J9;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=localhost;Database=cookBoard;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<cookBoardContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>   
@@ -60,7 +60,7 @@ namespace cookboard
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

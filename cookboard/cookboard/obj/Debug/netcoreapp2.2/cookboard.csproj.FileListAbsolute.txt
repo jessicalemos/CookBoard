@@ -82,7 +82,6 @@ C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\R
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutAluno.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutProfessor.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Account\utilizadorLogin.g.cshtml.cs
-C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\Login.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutPassos.g.cshtml.cs
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\bin\Debug\netcoreapp2.2\cookboard.deps.json
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\bin\Debug\netcoreapp2.2\cookboard.runtimeconfig.json
@@ -134,3 +133,9 @@ C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netc
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Aluno\Index.g.cshtml.cs
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Professor\Index.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Account\RegisterUtilizador.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Aluno\Index.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Professor\Index.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\criaEmenta.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\registaReceita.g.cshtml.cs

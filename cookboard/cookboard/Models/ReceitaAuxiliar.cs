@@ -10,8 +10,9 @@ namespace cookboard.Models
             ReceitaReceitaAuxiliar = new HashSet<ReceitaReceitaAuxiliar>();
         }
 
-        public string Nome { get; set; }
+        public int Id { get; set; }
 
         public virtual ICollection<ReceitaReceitaAuxiliar> ReceitaReceitaAuxiliar { get; set; }
     }
 }
+

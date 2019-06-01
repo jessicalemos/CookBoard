@@ -61,6 +61,10 @@ namespace cookboard.Controllers
                            where (n.Id == idReceita)
                            select n).Single();
 
+            List<ReceitaReceitaAuxiliar> ajudas = (from ri in co.ReceitaReceitaAuxiliar
+                                                where (ri.ReceitaId == idReceita)
+                                                select ri).ToList();
+
             List<PassosViewModel> passos = new List<PassosViewModel>();
             string[] words = rec.Descricao.Split('.');
             int tam = words.Length;
@@ -68,10 +72,24 @@ namespace cookboard.Controllers
             for(int j=0; j<tam-1; j++)
             {
                 string type;
+                int idAux = -1;
                 if (j == 0) type = "primeiro";
                 else if (j == tam - 2) type = "ultimo";
                 else type = "intermedio";
-                passos.Add(new PassosViewModel(j+1, words[j], j+2,j,type));
+                foreach(var aux in ajudas)
+                {
+                    if(aux.Passo == j + 1)
+                    {
+                        Console.WriteLine(aux.Passo);
+                        Console.WriteLine(aux.ReceitaAuxiliarId);
+                        int id = aux.ReceitaAuxiliarId;
+                        Receita r = (from n in co.Receita
+                                     where (n.Id == id)
+                                     select n).Single();
+                        idAux = r.Id;
+                    }
+                }
+                passos.Add(new PassosViewModel(j + 1, words[j], j + 2, j, type, idAux));
             }
 
             return View(passos);

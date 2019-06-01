@@ -37,7 +37,7 @@
                     </div>
                     <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Anterior" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoAnt)'" ;" />
                     <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Terminar" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
-                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Url.Action("getPassos","Receitas", new { idReceita = item.Auxiliar })'" ;" />
+                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Html.Raw(@Url.Action("getPassosAuxiliar","Receitas", new { idReceita = item.Auxiliar, idReceitaInit = item.IdReceita }))'" ;" />
                 </section>
             }
             else
@@ -62,7 +62,7 @@
                             <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
                         </div>
                         <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Proximo" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
-                        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Url.Action("getPassos","Receitas", new { idReceita = item.Auxiliar })'" ;" />
+                        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Html.Raw(@Url.Action("getPassosAuxiliar","Receitas", new { idReceita = item.Auxiliar, idReceitaInit = item.IdReceita }))'" ;" />
                     </section>
                 }
                 else
@@ -85,7 +85,7 @@
                         </div>
                         <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Anterior" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoAnt)'" ;" />
                         <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Proximo" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
-                        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Url.Action("getPassos","Receitas", new { idReceita = item.Auxiliar })'" ;" />
+                        <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Ajuda" onclick="location.href='@Html.Raw(@Url.Action("getPassosAuxiliar","Receitas", new { idReceita = item.Auxiliar, idReceitaInit = item.IdReceita }))'" ;" />
                     </section>
                 }
                 else

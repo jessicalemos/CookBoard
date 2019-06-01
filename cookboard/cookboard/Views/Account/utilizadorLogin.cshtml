@@ -1,6 +1,8 @@
 ﻿@model cookboard.Models.Utilizador
 @{
     ViewData["Title"] = "utilizadorLogin";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
 }
 
         @if (TempData["UserLoginFailed"] != null)

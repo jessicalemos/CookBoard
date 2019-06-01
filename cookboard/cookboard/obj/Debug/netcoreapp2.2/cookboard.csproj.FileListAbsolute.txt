@@ -130,3 +130,7 @@ C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netc
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\cookboard.csproj.CopyComplete
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\criaEmenta.g.cshtml.cs
 C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Utilizador\registaReceita.g.cshtml.cs
+C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Account\RegisterUtilizador.g.cshtml.cs
+C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
+C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Aluno\Index.g.cshtml.cs
+C:\Users\marta\OneDrive\Área de Trabalho\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Professor\Index.g.cshtml.cs

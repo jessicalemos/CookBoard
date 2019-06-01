@@ -1,9 +1,4 @@
-﻿@model IEnumerable<cookboard.Models.Utilizador>
-@{
-    ViewData["Title"] = "_LayoutAluno";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,9 +35,9 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
                             <div class="dropdown-menu" style="width:150px;">
-                                <a class="dropdown-item" asp-controller="Utilizador" asp-action="editarP"><strong>Editar Perfil</strong></a>
-                                <a class="dropdown-item" asp-controller="Utilizador" asp-action="getHistorico"> <strong>Histórico</strong></a>
-                                <a class="dropdown-item" asp-controller="Utilizador" asp-action="getFavoritos"><strong>Favoritos</strong></a>
+                                <a class="dropdown-item" asp-controller="Aluno" asp-action="editarP"><strong>Editar Perfil</strong></a>
+                                <a class="dropdown-item" asp-controller="Aluno" asp-action="getHistorico"> <strong>Histórico</strong></a>
+                                <a class="dropdown-item" asp-controller="Aluno" asp-action="getFavoritos"><strong>Favoritos</strong></a>
                                 <a class="dropdown-item" href="#"><strong>Log out</strong></a>
                             </div>
 

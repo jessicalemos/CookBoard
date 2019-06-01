@@ -37,8 +37,10 @@ namespace cookboard.Controllers
               return View();
         }
 
-        public ActionResult Index()
+        public IActionResult Index(string user,string tipo)
         {
+            TempData["Utilizador"] = user;
+            TempData["Tipo"] = tipo;
             return View();
         }
 
@@ -67,9 +69,14 @@ namespace cookboard.Controllers
                     var tipo = (from m in co.Utilizador where (m.Username == utilizador.Username) select m.Tipo).FirstOrDefault();
                     if (tipo.Equals("Professor"))
                     {
+                        TempData["Utilizador"] = utilizador.Username;
+                        TempData["Tipo"] = utilizador.Tipo;
+
                         return RedirectToAction("Index", "Professor");
                     }
                     else {
+                        TempData["Utilizador"] = utilizador.Username;
+                        TempData["Tipo"] = utilizador.Tipo;
                         return RedirectToAction("Index", "Aluno");
                     }                
                 }
@@ -80,6 +87,15 @@ namespace cookboard.Controllers
             }
             return View();
         }
+
+        /*
+        [HttpGet]
+        public IActionResult logOut()
+        {
+            return View();
+        }
+        */
+
         [HttpGet]
         public IActionResult RegisterUtilizador()
         {

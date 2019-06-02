@@ -16,8 +16,6 @@
 <h1>Registar Receita</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
         @if (TempData["Success"] != null)
         {
             <p class="alert alert-success">@TempData["Success"]  <a asp-action="UserLogin">Click here to login</a></p>
@@ -34,12 +32,12 @@
                 <div class="form-group"><input class="form-control" type="text" name="Imagem" placeholder="Imagem" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="InfoNutricional" placeholder="InfoNutricional" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="Dificuldade" placeholder="Dificuldade" required></div>
-                <div class="form-group"><input class="form-control" type="text" name="ingrediente" placeholder="ingrediente" required></div>
+                <div class="form-group"><input class="form-control" type="text" name="Ingrediente" placeholder="Ingrediente" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="Descricao" placeholder="Descricao" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="TempoConfecao" placeholder="TempoConfecao" required></div>
-                <label class="col-lg-3 control-label">Apenas preencher caso considere necessário o apoio de outra receita:</label>
+                <label>Apenas preencher caso considere necessário o apoio de outra receita:</label>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Escolha a receita:</label>
+                    <label>Escolha a receita:</label>
                     <select name="receitaAux">
                         <option value="receitaAux">
                             Selecione uma receita:
@@ -54,9 +52,7 @@
                             }}
                     </select>
                 </div>
-                <div class="form-group"><input class="form-control" type="text" name="Passo" placeholder="passo"></div>
+                <div class="form-group"><input class="form-control" type="text" name="Passo" placeholder="Passo"></div>
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(146,141,142);">Register</button></div>
             </form>
         </div>
-    </div>
-</div>

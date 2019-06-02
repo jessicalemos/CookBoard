@@ -1,0 +1,17 @@
+﻿@model IEnumerable<cookboard.Models.Ingrediente>
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewData["Title"] = "getIngredientes";
+}
+
+<h1>
+    Lista Ingredientes <input type="button" class="btn btn-light" style="float:right;" value="Localizar Ingredientes" onclick="location.href='@Url.Action("getLocalizacao","LocalIngrediente", new { idReceita = 1 })';" />
+</h1>
+
+<hr>
+
+@foreach (var item in Model)
+{
+   <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
+   <br>
+}

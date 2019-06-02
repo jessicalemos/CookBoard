@@ -1,22 +1,13 @@
 ﻿@model IEnumerable<cookboard.Models.EmentaViewModel>
 
 @{
-    string u = (string) TempData["Utilizador"];
-    if (u.Equals("Professor")){
-        Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
-
-    }
-    if (u.Equals("Aluno"))
-    {
         Layout = "~/Views/Shared/_LayoutAluno.cshtml";
-
-    }
     ViewBag.Title = "getEmentaSemanal";
 }
 
 <div class="container">
     <h1 class="my-4">Ementa Semanal</h1>
-    <input type="button" class="btn btn-light" value="Lista Ingredientes" onclick="location.href='@Url.Action("getIngredientes","EmentaSemanal")';" />
+    <input type="button" class="btn btn-light" value="Lista Ingredientes" onclick="location.href='@Url.Action("getIngredientes","Aluno")';" />
 
     @foreach (var item in Model)
     {

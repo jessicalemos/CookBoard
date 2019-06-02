@@ -25,9 +25,15 @@
             {
                 <input type="text" placeholder='comentario' style="font-size:1rem; overflow:auto;  width:40vw;" name="comentario" id="nome" required />
                 <input type="tel" list="estrelas" placeholder='estrelas' style="float:left; background-color:#192C3A; color:#FFFFFF; width:10%;" name="estrelas" required>
-                <datalist id="estrelas"></datalist>
+                <datalist id="estrelas">
+                    <option value="1"></option>
+                     <option value="2"></option>
+                     <option value="3"></option>
+                     <option value="4"></option>
+                     <option value="5"></option>
+                </datalist>
                 <input type="text" name="idReceita" value="@Model.Id" required hidden />
-                <input type="submit" value="AVALIAR" style="margin-top:-5px; margin-left:140px; " class="btn btn-primary btn-lg" />
+                <input type="submit" value="Avaliar" style="margin-top:-5px; margin-left:140px; " class="btn btn-light" />
             }
         }
         <hr style="border-color: white;">

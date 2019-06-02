@@ -15,6 +15,7 @@ namespace cookboard.Models
         {
         }
 
+        public virtual DbSet<Avaliacao> Avaliacao { get; set; }
         public virtual DbSet<EmentaSemanal> EmentaSemanal { get; set; }
         public virtual DbSet<EmentaSemanalReceita> EmentaSemanalReceita { get; set; }
         public virtual DbSet<Ingrediente> Ingrediente { get; set; }
@@ -42,10 +43,28 @@ namespace cookboard.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
+            modelBuilder.Entity<Avaliacao>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("PK__Avaliaca__3214EC06DCE417B4")
+                    .ForSqlServerIsClustered(false);
+
+                entity.Property(e => e.Comentario)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Receita)
+                    .WithMany(p => p.Avaliacao)
+                    .HasForeignKey(d => d.ReceitaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Avaliacao_Receita");
+            });
+
             modelBuilder.Entity<EmentaSemanal>(entity =>
             {
                 entity.HasIndex(e => e.DataLancamento)
-                    .HasName("UQ__EmentaSe__F974C948299FF24C")
+                    .HasName("UQ__EmentaSe__F974C94811FCE7C3")
                     .IsUnique();
 
                 entity.Property(e => e.DataLancamento).HasColumnType("datetime");
@@ -65,7 +84,7 @@ namespace cookboard.Models
             modelBuilder.Entity<EmentaSemanalReceita>(entity =>
             {
                 entity.HasKey(e => new { e.EmentaSemanalId, e.ReceitaId })
-                    .HasName("PK__EmentaSe__3BD41B654D26B467")
+                    .HasName("PK__EmentaSe__3BD41B65F331B5C8")
                     .ForSqlServerIsClustered(false);
 
                 entity.ToTable("EmentaSemanal_Receita");
@@ -91,7 +110,7 @@ namespace cookboard.Models
             modelBuilder.Entity<Ingrediente>(entity =>
             {
                 entity.HasIndex(e => e.Nome)
-                    .HasName("UQ__Ingredie__7D8FE3B20C1B95CC")
+                    .HasName("UQ__Ingredie__7D8FE3B22C1DFD41")
                     .IsUnique();
 
                 entity.Property(e => e.Nome)
@@ -103,7 +122,7 @@ namespace cookboard.Models
             modelBuilder.Entity<IngredienteSupermercado>(entity =>
             {
                 entity.HasKey(e => new { e.IngredienteId, e.SupermercadoId })
-                    .HasName("PK__Ingredie__293F7CCEC7C0D096");
+                    .HasName("PK__Ingredie__293F7CCE542B0CF8");
 
                 entity.ToTable("Ingrediente_Supermercado");
 
@@ -141,17 +160,12 @@ namespace cookboard.Models
             modelBuilder.Entity<Receita>(entity =>
             {
                 entity.HasIndex(e => e.Imagem)
-                    .HasName("UQ__Receita__345530D709BA2597")
+                    .HasName("UQ__Receita__345530D74B5F094F")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Nome)
-                    .HasName("UQ__Receita__7D8FE3B25B9F99AA")
+                    .HasName("UQ__Receita__7D8FE3B2B8A38DA7")
                     .IsUnique();
-
-                entity.Property(e => e.Comentarios)
-                    .IsRequired()
-                    .HasMaxLength(45)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Descricao)
                     .IsRequired()
@@ -202,7 +216,7 @@ namespace cookboard.Models
             modelBuilder.Entity<ReceitaIngrediente>(entity =>
             {
                 entity.HasKey(e => new { e.ReceitaId, e.IngredienteId })
-                    .HasName("PK__Receita___061B6A528AF23948");
+                    .HasName("PK__Receita___061B6A522CEE07EA");
 
                 entity.ToTable("Receita_Ingrediente");
 
@@ -227,7 +241,7 @@ namespace cookboard.Models
             modelBuilder.Entity<ReceitaReceitaAuxiliar>(entity =>
             {
                 entity.HasKey(e => new { e.ReceitaId, e.ReceitaAuxiliarId })
-                    .HasName("PK__Receita___08244E72CE9F11FB");
+                    .HasName("PK__Receita___08244E72664B9848");
 
                 entity.ToTable("Receita_ReceitaAuxiliar");
 
@@ -255,7 +269,7 @@ namespace cookboard.Models
             modelBuilder.Entity<SupermercadoLocal>(entity =>
             {
                 entity.HasKey(e => new { e.SupermercadoId, e.LocalId })
-                    .HasName("PK__Supermer__FCFB17F4147D270E");
+                    .HasName("PK__Supermer__FCFB17F46631209D");
 
                 entity.ToTable("Supermercado_Local");
 
@@ -275,14 +289,14 @@ namespace cookboard.Models
             modelBuilder.Entity<Utilizador>(entity =>
             {
                 entity.HasKey(e => e.Username)
-                    .HasName("PK__Utilizad__536C85E5FE62F4F3");
+                    .HasName("PK__Utilizad__536C85E55CF8253E");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Utilizad__A9D105345BC7219F")
+                    .HasName("UQ__Utilizad__A9D10534E297AB18")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Password)
-                    .HasName("UQ__Utilizad__87909B152BF00D48")
+                    .HasName("UQ__Utilizad__87909B15AFEF4A7E")
                     .IsUnique();
 
                 entity.Property(e => e.Username)
@@ -316,7 +330,7 @@ namespace cookboard.Models
             modelBuilder.Entity<UtilizadorReceita>(entity =>
             {
                 entity.HasKey(e => new { e.UtilizadorUsername, e.ReceitaId })
-                    .HasName("PK__Utilizad__52C3C0A80191CCA3");
+                    .HasName("PK__Utilizad__52C3C0A8560EB201");
 
                 entity.ToTable("Utilizador_Receita");
 

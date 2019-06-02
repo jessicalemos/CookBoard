@@ -47,7 +47,7 @@
                         <h6>@Html.DisplayFor(modelItem => item.Passo)</h6>
                     </div>
                     <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Anterior" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoAnt)'" ;" />
-                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Terminar" onclick="location.href='#@Html.DisplayFor(modelItem => item.NumPassoProx)'" ;" />
+                    <input type="button" class="btn btn-light" style="float:right; margin-top:50%;" value="Terminar" onclick="location.href='@Url.Action("getAvaliacao","Receitas",new { idReceita = item.IdReceita })'" ;" />
                 </section>
             }
         }

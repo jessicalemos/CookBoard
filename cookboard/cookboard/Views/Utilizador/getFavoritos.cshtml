@@ -1,6 +1,17 @@
 ﻿@model IEnumerable<cookboard.Models.Receita>
 @{
-    ViewData["Title"] = "getFavoritos";
+    ViewBag.Title = "getFavoritos";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
 
 <h1>Receitas Favoritas</h1>
@@ -31,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.TempoConfecao)
             </td>
             <td>
-                @Html.ActionLink("Consultar", "Consultar", new { idReceita = item.Nome })
+                @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
             </td>
         </tr>
     }

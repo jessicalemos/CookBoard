@@ -16,12 +16,25 @@ namespace cookboard.Controllers
             co = context;
         }
 
+        public string userType(string username)
+        {
+            var u = (from m in co.Utilizador
+                     where (m.Username == username)
+                     select m).FirstOrDefault();
+
+            string tipo = u.Tipo;
+            return tipo;
+        }
+
         public ActionResult getReceitas()
         {
             var receitas = (from m in co.Receita select m);
 
             List<Receita> lista = receitas.ToList<Receita>();
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(lista);
         }
 
@@ -51,7 +64,10 @@ namespace cookboard.Controllers
             Receita rec = (from n in co.Receita
                        where (n.Id == idReceita)
                        select n).Single();
-          
+
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(new ReceitaViewModel(rec, final));
         }
 
@@ -90,6 +106,9 @@ namespace cookboard.Controllers
                 passos.Add(new PassosViewModel(j + 1, words[j], j + 2, j, type, idAux, idReceita, -1));
             }
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(passos);
         }
 
@@ -128,6 +147,9 @@ namespace cookboard.Controllers
                 passos.Add(new PassosViewModel(j + 1, words[j], j + 2, j, type, idAux, idReceita, idReceitaInit));
             }
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(passos);
         }
     }

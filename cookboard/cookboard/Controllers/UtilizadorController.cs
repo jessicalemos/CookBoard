@@ -22,14 +22,30 @@ namespace cookboard.Controllers
             co = context;
         }
 
+        public string userType(string username)
+        {
+            var u = (from m in co.Utilizador
+                     where (m.Username == username)
+                     select m).FirstOrDefault();
+
+            string tipo = u.Tipo;
+            return tipo;
+        }
+
         public IActionResult editarP()
         {
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View();
         }
 
         public IActionResult getUsers()
         {
             List<Utilizador> u = co.Utilizador.ToList();
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(u);
         }
 
@@ -41,6 +57,7 @@ namespace cookboard.Controllers
                             where (m.UtilizadorUsername == username)
                             select n).ToList();
 
+            ViewData["Type"] = userType(username);
             return View(receitas);
         }
 
@@ -52,6 +69,7 @@ namespace cookboard.Controllers
                             where (m.UtilizadorUsername == username && m.Favorito == 1)
                             select n).ToList();
 
+            ViewData["Type"] = userType(username);
             return View(receitas);
         }
 
@@ -59,6 +77,9 @@ namespace cookboard.Controllers
         {
             var receita = (from m in co.Receita where (m.Id == idReceita) select m).ToList();
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(receita);
         }
 

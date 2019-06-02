@@ -1,6 +1,17 @@
 ﻿@model IEnumerable<cookboard.Models.Receita>
 @{
-    ViewData["Title"] = "getHistorico";
+    ViewBag.Title = "getHistorico";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
 
 <h1>Histórico Receitas</h1>
@@ -20,19 +31,19 @@
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dificuldade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TempoConfecao)
-        </td>
-        <td>
-            @Html.ActionLink("Consultar", "Consultar", new { idReceita = item.Nome })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dificuldade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempoConfecao)
+            </td>
+            <td>
+                @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
+            </td>
+        </tr>
     }
 </table>

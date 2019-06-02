@@ -16,6 +16,16 @@ namespace cookboard.Controllers
             co = context;
         }
 
+        public string userType(string username)
+        {
+            var u = (from m in co.Utilizador
+                     where (m.Username == username)
+                     select m).FirstOrDefault();
+
+            string tipo = u.Tipo;
+            return tipo;
+        }
+
         public ActionResult getEmentaSemanal()
         {
             var size = (from m in co.EmentaSemanal select m).ToList().Count;
@@ -41,6 +51,9 @@ namespace cookboard.Controllers
                 final.Add(new EmentaViewModel(d, r));
             }
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(final);
         }
 
@@ -55,6 +68,9 @@ namespace cookboard.Controllers
                           where (m.EmentaSemanalId == size)
                           select i).ToHashSet();
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(ing);
         }
     }

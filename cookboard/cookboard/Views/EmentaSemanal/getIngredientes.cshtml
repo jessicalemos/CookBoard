@@ -1,6 +1,17 @@
 ﻿@model IEnumerable<cookboard.Models.Ingrediente>
 @{
-    ViewData["Title"] = "getIngredientes";
+    ViewBag.Title = "getIngredientes";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
 
 <h1>
@@ -11,6 +22,6 @@
 
 @foreach (var item in Model)
 {
-   <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
-   <br>
+    <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
+    <br>
 }

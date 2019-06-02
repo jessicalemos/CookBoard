@@ -1,7 +1,17 @@
-﻿@model  IEnumerable<cookboard.Models.LocalIngredienteViewModel>
+﻿@model IEnumerable<cookboard.Models.LocalIngredienteViewModel>
 @{
     ViewBag.Title = "getLocalizacao";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -53,7 +63,7 @@
             <h1> Locais </h1>
             @foreach (var item in Model)
             {
-            <h5> @Html.DisplayFor(modelItem => item.Supermercado)</h5>
+                <h5> @Html.DisplayFor(modelItem => item.Supermercado)</h5>
                 <h6> @Html.DisplayFor(modelItem => item.Local.Localidade)</h6>
                 <p> @Html.DisplayFor(modelItem => item.Local.Rua), @Html.DisplayFor(modelItem => item.Local.CodigoPostal) </p>
             }

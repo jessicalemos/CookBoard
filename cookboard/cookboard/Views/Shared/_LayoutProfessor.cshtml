@@ -24,15 +24,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="form-inline my-2 my-lg-0">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-light" type="submit">Search</button>
-                        </li>
-
+                        <form action="~/Home/Pesquisa" method="POST">
+                            <li class="form-inline my-2 my-lg-0">
+                                <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-light" type="submit">Search</button>
+                            </li>
+                        </form>
                         <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="getReceitas" style="padding-top:20px;"><strong>Receitas</strong></a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="getEmentaSemanal" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="blabla" style="padding-top:20px;"><strong>Registar Ementa Semanal</strong></a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="blabla" style="padding-top:20px;"><strong>Registar Receita</strong></a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="RegisterEmenta" style="padding-top:20px;"><strong>Registar Ementa Semanal</strong></a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="RegisterReceita" style="padding-top:20px;"><strong>Registar Receita</strong></a></li>
                         <li class="nav-item dropdown">
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>

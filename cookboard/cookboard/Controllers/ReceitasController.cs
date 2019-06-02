@@ -152,5 +152,86 @@ namespace cookboard.Controllers
             ViewData["Type"] = userType(username);
             return View(passos);
         }
+
+        [HttpGet]
+        public IActionResult RegisterReceita()
+        {
+            List<Receita> receitas = (from ri in co.Receita
+                                      select ri).ToList();
+            string username = User.Identity.Name;
+            ViewData["Type"] = userType(username);
+            return View(new RegisterReceitaModel(receitas));
+        }
+
+        public bool registerIngrediente(int receitaId, string ingrediente)
+        {
+            string[] words = ingrediente.Split('.');
+            foreach (var word in words)
+            {
+                string[] info = word.Split("-");
+                if (info.Length > 1)
+                {
+                    int id;
+                    var Ingrediente = (from m in co.Ingrediente where (info[0] == m.Nome) select m).FirstOrDefault();
+                    if (Ingrediente == null)
+                    {
+                        Ingrediente ing = new Ingrediente();
+                        ing.Nome = info[0];
+                        co.Ingrediente.Add(ing);
+                        co.SaveChanges();
+                        id = ing.Id;
+                    }
+                    else id = Ingrediente.Id;
+                    ReceitaIngrediente ri = new ReceitaIngrediente();
+                    ri.ReceitaId = receitaId;
+                    ri.IngredienteId = id;
+                    ri.Quantidade = info[1];
+                    co.ReceitaIngrediente.Add(ri);
+                    co.SaveChanges();
+                }
+            }
+
+            return true;
+        }
+
+        public bool registerReceita(Receita receita, string ingrediente, string receitaAux, int passo)
+        {
+            receita.Comentarios = " ";
+            string username = User.Identity.Name;
+            receita.UtilizadorUsername = username;
+            receita.Avaliacao = 0;
+            co.Receita.Add(receita);
+            co.SaveChanges();
+            if (!receitaAux.Equals("receitaAux"))
+            {
+                ReceitaAuxiliar r = new ReceitaAuxiliar();
+                var re = (from m in co.Receita where m.Nome == receitaAux select m).FirstOrDefault();
+                r.Id = re.Id;
+                co.ReceitaAuxiliar.Add(r);
+                co.SaveChanges();
+                ReceitaReceitaAuxiliar ra = new ReceitaReceitaAuxiliar();
+                ra.Passo = passo;
+                ra.ReceitaId = receita.Id;
+                ra.ReceitaAuxiliarId = re.Id;
+                co.ReceitaReceitaAuxiliar.Add(ra);
+                co.SaveChanges();
+            }
+            registerIngrediente(receita.Id, ingrediente);
+            ViewData["Type"] = userType(username);
+            return true;
+        }
+
+        [HttpPost]
+        public IActionResult RegisterReceita([Bind] Receita receita, string ingrediente, string receitaAux, int passo)
+        {
+            bool RegistrationStatus = registerReceita(receita, ingrediente, receitaAux, passo);
+            string username = User.Identity.Name;
+            if (RegistrationStatus)
+            {
+                ModelState.Clear();
+            }
+            ViewData["Type"] = userType(username);
+            return View();
+        }
     }
 }

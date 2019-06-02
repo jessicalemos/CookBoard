@@ -8,7 +8,7 @@ using cookboard._Shared;
 using System.Security.Cryptography;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace cookboard.Controllers
 {
@@ -30,14 +30,6 @@ namespace cookboard.Controllers
 
             string tipo = u.Tipo;
             return tipo;
-        }
-
-        public IActionResult editarP()
-        {
-            string username = User.Identity.Name;
-
-            ViewData["Type"] = userType(username);
-            return View();
         }
 
         public IActionResult getUsers()
@@ -83,5 +75,28 @@ namespace cookboard.Controllers
             return View(receita);
         }
 
+        [HttpGet]
+        public IActionResult editarP()
+        {
+            string username = User.Identity.Name;
+            var u = (from m in co.Utilizador where m.Username == username select m).FirstOrDefault();
+            ViewData["Type"] = userType(username);
+            return View(u);
+        }
+        [HttpPost]
+
+        public IActionResult editarP(string nome, string email, string password)
+        {
+            string username = User.Identity.Name;
+            var u = (from m in co.Utilizador where m.Username == username select m).FirstOrDefault();
+            u.Nome = nome;
+            u.Email = email;
+            u.Password = MyHelper.HashPassword(password);
+            co.Entry(u).State = EntityState.Modified;
+            co.SaveChanges();
+            TempData["Success"] = "Changed successfully";
+            ViewData["Type"] = userType(username);
+            return View(u);
+        }
     }
 }

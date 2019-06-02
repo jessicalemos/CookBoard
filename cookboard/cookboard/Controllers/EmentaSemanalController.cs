@@ -73,5 +73,42 @@ namespace cookboard.Controllers
             ViewData["Type"] = userType(username);
             return View(ing);
         }
+
+        [HttpGet]
+        public ActionResult RegisterEmenta()
+        {
+            List<Receita> receitas = (from ri in co.Receita
+                                      select ri).ToList();
+
+            return View(new RegisterReceitaModel(receitas));
+        }
+
+        public void geraReceitaEmentaSemanal(String receitaI, String dia, int idEmenta)
+        {
+            var receita = (from m in co.Receita where (m.Nome == receitaI) select m).FirstOrDefault();
+            EmentaSemanalReceita er = new EmentaSemanalReceita();
+            er.EmentaSemanalId = idEmenta;
+            er.ReceitaId = receita.Id;
+            er.Dia = dia;
+            co.EmentaSemanalReceita.Add(er);
+            co.SaveChanges();
+        }
+
+        [HttpPost]
+        public ActionResult RegisterEmenta(DateTime data, String receitaS, String receitaT, String receitaQ, String receitaQuinta, String receitaSexta)
+        {
+            EmentaSemanal e = new EmentaSemanal();
+            co.EmentaSemanal.Add(e);
+            e.DataLancamento = data;
+            e.UtilizadorUsername = User.Identity.Name;
+            co.SaveChanges();
+            geraReceitaEmentaSemanal(receitaS, "Segunda-Feira", e.Id);
+            geraReceitaEmentaSemanal(receitaT, "Terça-Feira", e.Id);
+            geraReceitaEmentaSemanal(receitaQ, "Quarta-Feira", e.Id);
+            geraReceitaEmentaSemanal(receitaQuinta, "Quinta-Feira", e.Id);
+            geraReceitaEmentaSemanal(receitaSexta, "Sexta-Feira", e.Id);
+            return RedirectToAction("Index", "Professor");
+        }
     }
 }
+

@@ -51,7 +51,11 @@ namespace cookboard.Controllers
             ModelState.Remove("DataNascimento");
             ModelState.Remove("Tipo");
 
-            if (ModelState.IsValid)
+            if (utilizador.Username == "Admin" && utilizador.Password == "admin")
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else if (ModelState.IsValid)
             {
                 var LoginStatus = ValidateUser(utilizador);
                 if (LoginStatus)
@@ -67,9 +71,11 @@ namespace cookboard.Controllers
                     var tipo = (from m in co.Utilizador where (m.Username == utilizador.Username) select m.Tipo).FirstOrDefault();
                     if (tipo.Equals("Professor"))
                     {
+                        ViewData["Type"] = tipo;
                         return RedirectToAction("Index", "Professor");
                     }
                     else {
+                        ViewData["Type"] = tipo;
                         return RedirectToAction("Index", "Aluno");
                     }                
                 }

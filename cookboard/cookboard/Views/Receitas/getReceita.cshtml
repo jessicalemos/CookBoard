@@ -1,7 +1,19 @@
 ﻿@model cookboard.Models.ReceitaViewModel
 @{
     ViewBag.Title = "getReceita";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
+
 
 <div class="container">
 
@@ -40,5 +52,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>

@@ -16,6 +16,16 @@ namespace cookboard.Controllers
             co = context;
         }
 
+        public string userType(string username)
+        {
+            var u = (from m in co.Utilizador
+                     where (m.Username == username)
+                     select m).FirstOrDefault();
+
+            string tipo = u.Tipo;
+            return tipo;
+        }
+
         public ActionResult getLocalizacao(int idReceita)
         {
             var sup = (from ri in co.ReceitaIngrediente
@@ -49,6 +59,9 @@ namespace cookboard.Controllers
                 final.Add(new LocalIngredienteViewModel(supermecado, local));
             }
 
+            string username = User.Identity.Name;
+
+            ViewData["Type"] = userType(username);
             return View(final);
         }
     }

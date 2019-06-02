@@ -1,6 +1,17 @@
 ﻿@model IEnumerable<cookboard.Models.Utilizador>
 @{
-    ViewData["Title"] = "getUsers";
+    ViewBag.Title = "getUsers";
+    string currentType = (string)@ViewData["Type"];
+
+    switch (currentType)
+    {
+        case "Professor":
+            Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            break;
+        case "Aluno":
+            Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+            break;
+    }
 }
 
 <h1>getUsers</h1>
@@ -17,16 +28,16 @@
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.ActionLink("Consultar", "Consultar", new { idServico = item.Nome })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.ActionLink("Consultar", "Consultar", new { idServico = item.Nome })
+            </td>
+        </tr>
     }
 </table>

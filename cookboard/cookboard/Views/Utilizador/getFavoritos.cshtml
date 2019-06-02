@@ -31,19 +31,22 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dificuldade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TempoConfecao)
-            </td>
-            <td>
-                @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dificuldade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TempoConfecao)
+        </td>
+        <td>
+            @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Remover", "removeFavoritos", new { idReceita = item.Id })
+        </td>
+    </tr>
     }
 </table>

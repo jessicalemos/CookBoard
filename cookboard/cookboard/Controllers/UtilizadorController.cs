@@ -98,5 +98,20 @@ namespace cookboard.Controllers
             ViewData["Type"] = userType(username);
             return View(u);
         }
+
+        public IActionResult removeFavoritos(int idReceita)
+        {
+            string username = User.Identity.Name;
+            var ur = (from m in co.UtilizadorReceita
+                      join n in co.Receita on m.ReceitaId equals n.Id
+                      where (m.UtilizadorUsername == username && m.ReceitaId == idReceita)
+                      select m).FirstOrDefault();
+            int id = ur.ReceitaId;
+            ur.Favorito = 0;
+            co.Entry(ur).State = EntityState.Modified;
+            co.SaveChanges();
+            ViewData["Type"] = userType(username);
+            return RedirectToAction("getFavoritos");
+        }
     }
 }

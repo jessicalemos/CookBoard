@@ -241,13 +241,19 @@ namespace cookboard.Controllers
                        where (n.Id == idReceita)
                        select n).Single();
 
+            var ure = (from n in co.UtilizadorReceita
+                       where (n.ReceitaId == idReceita && n.UtilizadorUsername == username)
+                       select n).FirstOrDefault();
 
-            UtilizadorReceita ur = new UtilizadorReceita();
-            ur.Favorito = 0;
-            ur.ReceitaId = idReceita;
-            ur.UtilizadorUsername = username;
-            co.SaveChanges();
-            
+            if (ure == null)
+            {
+                UtilizadorReceita ur = new UtilizadorReceita();
+                ur.Favorito = 0;
+                ur.ReceitaId = idReceita;
+                ur.UtilizadorUsername = username;
+                co.UtilizadorReceita.Add(ur);
+                co.SaveChanges();
+            }
             ViewData["Type"] = userType(username);
             return View(rec);
         }

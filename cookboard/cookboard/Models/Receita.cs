@@ -7,6 +7,7 @@ namespace cookboard.Models
     {
         public Receita()
         {
+            Avaliacao = new HashSet<Avaliacao>();
             EmentaSemanalReceita = new HashSet<EmentaSemanalReceita>();
             ReceitaIngrediente = new HashSet<ReceitaIngrediente>();
             ReceitaReceitaAuxiliar = new HashSet<ReceitaReceitaAuxiliar>();
@@ -16,9 +17,7 @@ namespace cookboard.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int Porcao { get; set; }
-        public int Avaliacao { get; set; }
         public string Imagem { get; set; }
-        public string Comentarios { get; set; }
         public string InfoNutricional { get; set; }
         public string Dificuldade { get; set; }
         public string Descricao { get; set; }
@@ -26,6 +25,7 @@ namespace cookboard.Models
         public string UtilizadorUsername { get; set; }
 
         public virtual Utilizador UtilizadorUsernameNavigation { get; set; }
+        public virtual ICollection<Avaliacao> Avaliacao { get; set; }
         public virtual ICollection<EmentaSemanalReceita> EmentaSemanalReceita { get; set; }
         public virtual ICollection<ReceitaIngrediente> ReceitaIngrediente { get; set; }
         public virtual ICollection<ReceitaReceitaAuxiliar> ReceitaReceitaAuxiliar { get; set; }

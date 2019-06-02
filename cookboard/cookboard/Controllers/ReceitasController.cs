@@ -196,10 +196,8 @@ namespace cookboard.Controllers
 
         public bool registerReceita(Receita receita, string ingrediente, string receitaAux, int passo)
         {
-            receita.Comentarios = " ";
             string username = User.Identity.Name;
             receita.UtilizadorUsername = username;
-            receita.Avaliacao = 0;
             co.Receita.Add(receita);
             co.SaveChanges();
             if (!receitaAux.Equals("receitaAux"))
@@ -232,6 +230,58 @@ namespace cookboard.Controllers
             }
             ViewData["Type"] = userType(username);
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult getAvaliacao(int idReceita)
+        {
+            string username = User.Identity.Name;
+
+            var rec = (from n in co.Receita
+                       where (n.Id == idReceita)
+                       select n).Single();
+
+
+            UtilizadorReceita ur = new UtilizadorReceita();
+            ur.Favorito = 0;
+            ur.ReceitaId = idReceita;
+            ur.UtilizadorUsername = username;
+            co.SaveChanges();
+            
+            ViewData["Type"] = userType(username);
+            return View(rec);
+        }
+
+        [HttpPost]
+        public ActionResult avaliar(string comentario, int estrelas, int idReceita)
+        {
+            var rec = (from n in co.Receita
+                       where (n.Id == idReceita)
+                       select n).Single();
+
+            int id = idReceita;
+
+            Avaliacao a = new Avaliacao();
+            a.Comentario = comentario;
+            a.Estrela = estrelas;
+            a.ReceitaId = idReceita;
+            co.Avaliacao.Add(a);
+            co.SaveChanges();
+            return RedirectToAction("getAvaliacao", new { idReceita = idReceita });
+        }
+
+        public ActionResult addFavorito(int idReceita)
+        {
+            string username = User.Identity.Name;
+
+            var ur = (from n in co.UtilizadorReceita
+                      where (n.ReceitaId == idReceita && n.UtilizadorUsername == username)
+                      select n).Single();
+
+            ur.Favorito = 1;
+            co.SaveChanges();
+
+            return RedirectToAction("getAvaliacao", new { idReceita = idReceita });
         }
     }
 }

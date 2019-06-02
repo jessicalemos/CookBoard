@@ -142,3 +142,7 @@ C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\R
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Receitas\getPassosAuxiliar.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Index.g.cshtml.cs
 C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutAdmin.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\EmentaSemanal\RegisterEmenta.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Pesquisa.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Receitas\RegisterReceita.g.cshtml.cs
+C:\Users\X556\Documents\GitHub\LI4\cookboard\cookboard\obj\Debug\netcoreapp2.2\Razor\Views\Receitas\getAvaliacao.g.cshtml.cs

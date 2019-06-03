@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.TempoConfecao)
             </td>
             <td>
-                @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
+                @Html.ActionLink("Consultar","getReceita", "Receitas", new { idReceita = item.Id })
             </td>
             <td>
                 @Html.ActionLink("Remover", "removeFavoritos", new { idReceita = item.Id })

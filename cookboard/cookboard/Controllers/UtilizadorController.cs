@@ -32,15 +32,6 @@ namespace cookboard.Controllers
             return tipo;
         }
 
-        public IActionResult getUsers()
-        {
-            List<Utilizador> u = co.Utilizador.ToList();
-            string username = User.Identity.Name;
-
-            ViewData["Type"] = userType(username);
-            return View(u);
-        }
-
         public IActionResult getHistorico()
         {
             string username = User.Identity.Name;

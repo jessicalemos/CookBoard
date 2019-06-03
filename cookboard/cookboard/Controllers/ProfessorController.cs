@@ -15,7 +15,6 @@ namespace cookboard.Controllers
     [Route("[controller]/[action]")]
     public class ProfessorController : Controller
     {
-        private readonly cookBoardContext co;
 
         public IActionResult Index()
         {

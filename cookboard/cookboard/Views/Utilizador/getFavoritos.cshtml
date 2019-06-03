@@ -14,9 +14,10 @@
     }
 }
 
-<h1>Receitas Favoritas</h1>
+<div style="margin-left: 24px; font-weight: 900; font-size: 30px; padding-bottom: 20px;">Receitas Favoritas</div>
 
-<table class="table">
+
+<table class="table" style="margin-left: 24px;">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
@@ -43,6 +44,9 @@
             </td>
             <td>
                 @Html.ActionLink("getReceita", "Receitas", new { idReceita = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Remover", "removeFavoritos", new { idReceita = item.Id })
             </td>
         </tr>
     }

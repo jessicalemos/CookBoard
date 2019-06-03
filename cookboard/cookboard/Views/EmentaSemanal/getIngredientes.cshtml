@@ -14,14 +14,19 @@
     }
 }
 
-<h1>
-    Lista Ingredientes <input type="button" class="btn btn-light" style="float:right;" value="Localizar Ingredientes" onclick="location.href='@Url.Action("getLocalizacao","LocalIngrediente", new { idReceita = 1 })';" />
-</h1>
+<div style="display:flex; justify-content: space-between">
+    <h1 style="margin-left: 24px;">
+        Lista Ingredientes
+    </h1>
+    <input style="margin-right: 24px;" type="button" class="btn btn-light" style="float:right;" value="Localizar Ingredientes" onclick="location.href='@Url.Action("getLocalizacao","LocalIngrediente", new { idReceita = 1 })';" />
+</div>
 
 <hr>
 
-@foreach (var item in Model)
-{
-    <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
-    <br>
-}
+<div style="margin-left: 24px;">
+    @foreach (var item in Model)
+    {
+        <input type="checkbox"> @Html.DisplayFor(modelItem => item.Nome)
+        <hr>
+    }
+</div>

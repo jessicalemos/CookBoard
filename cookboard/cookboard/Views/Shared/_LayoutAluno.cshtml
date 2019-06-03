@@ -14,33 +14,35 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-white navbar-transparecy static-top">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg bg-white navbar-transparecy static-top" style="justify-content: space-between;
+    flex-direction: row;">
                 <a class="navbar-brand" asp-controller="Aluno" asp-action="Index">
-                    <img src="~/img/logo.png" style="height:75px">
+                    <img src="~/img/icon.png" style="height:50px">
                 </a>
+            <div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
-                        <form action="~/Home/Pesquisa" method="POST">
-                            <li class="form-inline my-2 my-lg-0">
-                                <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-light" type="submit">Search</button>
-                            </li>
-                        </form>
+                        <li class="nav-item">
+                            <form action="~/Home/Pesquisa" method="POST" style="padding-top:14px; padding-right: 4px">
+                                <li class="form-inline my-2 my-lg-0">
+                            <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-light" type="submit">Search</button>
+                                 </li>
+                            </form>
+                        </li>
 
                         <li class="nav-item"><a class="nav-link" asp-controller="Receitas" asp-action="getReceitas" style="padding-top:20px;"><strong>Receitas</strong></a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="EmentaSemanal" asp-action="getEmentaSemanal" style="padding-top:20px;"><strong>Ementa Semanal</strong></a></li>
-                        <li class="nav-item dropdown">
-                        <li class="dropdown">
+                        <li class="nav-item dropdown" style="margin-right: 80px;">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top:20px;"><strong>Perfil</strong></a>
-                            <div class="dropdown-menu" style="width:150px;">
+                            <div class="dropdown-menu" style=" width:150px; position: absolute; top: 60px; right: 360px;">
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="editarP"><strong>Editar Perfil</strong></a>
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="getHistorico"> <strong>Histórico</strong></a>
                                 <a class="dropdown-item" asp-controller="Utilizador" asp-action="getFavoritos"><strong>Favoritos</strong></a>
-                                <a class="dropdown-item" href="#"><strong>Log out</strong></a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="Index"><strong>Log out</strong></a>
                             </div>
 
                         </li>

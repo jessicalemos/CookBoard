@@ -13279,23 +13279,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\X556\\.nuget\\packages\\": {},
+    "C:\\Users\\marta\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\X556\\Documents\\GitHub\\LI4\\cookboard\\cookboard\\cookboard.csproj",
+      "projectUniqueName": "C:\\Users\\marta\\OneDrive\\Área de Trabalho\\LI4\\cookboard\\cookboard\\cookboard.csproj",
       "projectName": "cookboard",
-      "projectPath": "C:\\Users\\X556\\Documents\\GitHub\\LI4\\cookboard\\cookboard\\cookboard.csproj",
-      "packagesPath": "C:\\Users\\X556\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\X556\\Documents\\GitHub\\LI4\\cookboard\\cookboard\\obj\\",
+      "projectPath": "C:\\Users\\marta\\OneDrive\\Área de Trabalho\\LI4\\cookboard\\cookboard\\cookboard.csproj",
+      "packagesPath": "C:\\Users\\marta\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marta\\OneDrive\\Área de Trabalho\\LI4\\cookboard\\cookboard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\X556\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

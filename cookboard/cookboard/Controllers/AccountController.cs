@@ -105,5 +105,10 @@ namespace cookboard.Controllers
             }
             return View();
         }
+
+        public IActionResult Logout()
+        {
+            return View();
+        }
     }
 }

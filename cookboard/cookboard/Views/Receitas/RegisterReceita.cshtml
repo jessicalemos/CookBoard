@@ -13,8 +13,6 @@
             break;
     }
 }
-<h1>Registar Receita</h1>
-
 <hr />
         @if (TempData["Success"] != null)
         {
@@ -24,9 +22,9 @@
         {
             <p class="alert alert-danger">@TempData["Fail"]</p>
         }
-        <div class="registar-clean">
+        <div style="background-repeat: no-repeat; background-size: cover;" class="registar-clean">
             <form method="post">
-                <div class="illustration"><img src="~/img/logo.png" style="height:100px;"></div>
+                <div style="text-align: center; font-weight: 900; font-size: 18px; padding-bottom: 20px;">Registar Receita</div>
                 <div class="form-group"><input class="form-control" type="text" name="Nome" placeholder="Nome" required> </div>
                 <div class="form-group"><input class="form-control" type="text" name="Porcao" placeholder="Porcao" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="Imagem" placeholder="Imagem" required></div>

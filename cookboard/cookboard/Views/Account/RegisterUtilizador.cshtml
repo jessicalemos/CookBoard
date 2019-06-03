@@ -4,10 +4,6 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Registar Utilizador</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
         @if (TempData["Success"] != null)
         {
             <p class="alert alert-success">@TempData["Success"]  <a asp-action="utilizadorLogin">Click here to login</a></p>
@@ -17,9 +13,9 @@
             <p class="alert alert-danger">@TempData["Fail"]</p>
         }
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="registar-clean" style="background-size:cover;">
+        <div class="registar-clean" style="background-repeat: no-repeat; background-size: cover;" >
             <form method="post">
-                <div class="illustration"><img src="~/img/logo.png" style="height:100px;"></div>
+                <div style="text-align: center; font-weight: 900; font-size: 18px; padding-bottom: 20px;">Registar Utilizador</div>
                 <div class="form-group"><input class="form-control" type="text" name="Username" placeholder="Username" required> </div>
                 <div class="form-group"><input class="form-control" type="text" name="Password" placeholder="Password" required></div>
                 <div class="form-group"><input class="form-control" type="text" name="Email" placeholder="Email" required></div>
@@ -36,6 +32,4 @@
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(146,141,142);">Register</button></div>
             </form>
         </div>
-    </div>
-</div>
 

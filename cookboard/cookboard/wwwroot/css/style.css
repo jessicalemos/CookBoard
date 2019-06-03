@@ -7,7 +7,9 @@
 
 .login-clean {
     background: url('/img/background.jpg');
-    padding: 80px 0
+    padding: 80px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
     .login-clean form {
@@ -81,7 +83,9 @@
 
 .registar-clean {
     background: url('/img/background.jpg');
-    padding: 55px 0
+    padding: 55px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
     .registar-clean form {
@@ -232,4 +236,9 @@ h1, h2, h3, h4, h5, h6, a, strong {
     justify-content: space-around;
     align-items: center;
     padding: 0 2rem;
+}
+
+.dia-receita {
+    display: flex;
+    justify-content: space-between;
 }
